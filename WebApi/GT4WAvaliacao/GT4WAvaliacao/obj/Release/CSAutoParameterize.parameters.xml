@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="GT4WDataBase-Web.config Connection String" description="GT4WDataBase Connection String used in web.config by the application to access the database." defaultValue="Data Source=den1.mssql1.gear.host;Initial Catalog=gtfwdb;Integrated Security=False;User ID=gtfwdb;Password=lmbm_182;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\leand\\documents\\visual\ studio\ 2015\\Projects\\GT4WAvaliacao\\GT4WAvaliacao\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='GT4WDataBase']/@connectionString" />
+  </parameter>
+</parameters>

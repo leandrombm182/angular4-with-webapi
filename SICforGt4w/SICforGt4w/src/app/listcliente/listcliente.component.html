@@ -1,0 +1,32 @@
+<section>  
+    <div class="container">
+      <h4>Lista de Cliente</h4>
+    <table class="table table-striped">
+      <thead>
+        <th>Código</th>
+        <th>Nome</th>
+        <th>Cpf</th>
+        <th>Ações</th>
+      </thead>
+      <tbody>
+        <tr *ngIf="!clientes"><td colspan="4" ><p class="text-center "><fa name="spinner" animation="spin" size="5x"></fa></p></td></tr>
+        <tr *ngIf="clientes ? clientes.length==0: false"><td colspan="4" ><p class="text-center ">Nenhum Cliente Encontrado</p></td></tr>
+        <tr  *ngFor="let cliente of clientes"><td>{{cliente.Id}}</td><td>{{cliente.Nome}}</td><td>{{cliente.Cpf}}</td><td>
+            <ul class="list-inline">
+              <li class="list-inline-item">
+                <a [routerLink]='["/Visualizar/", cliente.Id]' title="Visualizar"><fa name="file"></fa>        
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a [routerLink]='["/Editar/", cliente.Id]' title="Editar"> <fa name="edit"></fa>       
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a (click)="deletarCliente(cliente.Id)" title="Deletar"><fa name="trash"></fa></a>
+              </li>
+            </ul>
+          </td></tr>
+      </tbody>
+    </table>
+    </div>
+</section>

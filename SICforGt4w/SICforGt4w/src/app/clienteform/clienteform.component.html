@@ -1,0 +1,61 @@
+<section>
+   <div class="container">
+    <h4>{{title}} de Cliente</h4>
+    <form #formCliente="ngForm" (ngSubmit)="title==='Cadastro' ? cadastrarCliente(formCliente): editarCliente(formCliente)" class="needs-validation" novalidate>
+     
+      <div class="row">
+        <div class="col-sm-12">
+          <input type="hidden" id="cod-cliente" name="Id" class="form-control" [ngModel]="cliente.Id" >
+          <div class="row">
+            <label for="nome-cliente">Nome</label>
+            <input type="text" class="form-control" id="nome-cliente" name="Nome" [ngModel]="cliente.Nome" [disabled]="bloquearCampos" required>
+            <label for="cpf-cliente">CPF</label>
+            <input type="text" id="cpf-cliente" name="Cpf" class="form-control" mask='999.999.999-99' [ngModel]="cliente.Cpf" placeholder="___.___.___-__" [disabled]="bloquearCampos" (change)="CheckCpf($event)"
+              ngModel required>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="row">
+            <label for="data-nasc-cliente">Data de Nascimento</label>
+            <input type="date" class="form-control" id="data-nasc-cliente" name="DataNascimento" [ngModel]="cliente.DataNascimento | date:'yyyy-MM-dd'" [disabled]="bloquearCampos" required>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="row">
+            <label for="uf-cliente">UF</label>
+            <select name="Estado" class="form-control" id="uf-cliente" aria-placeholder="" [ngModel]="cliente.Estado" [disabled]="bloquearCampos" required>
+              <option value="">Selecione</option>
+              <option *ngFor="let country of countries" [value]="country.sigla">
+                {{country.nome}}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="row">
+            <label for="peso-cliente">Peso</label>
+            <div class="input-group mb-3">
+              <input type="number" id="peso-cliente" name="Peso" class="form-control" [ngModel]="cliente.Peso" [disabled]="bloquearCampos" required>
+              <div class="input-group-append">
+                <span class="input-group-text">Kg</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="row" *ngIf="!bloquearCampos">
+        <div class="col">
+          <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary pull-right" [disabled]="!formCliente.valid">Salvar</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
